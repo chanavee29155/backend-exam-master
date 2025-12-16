@@ -5,10 +5,22 @@ from apis.models import School, Classroom, Teacher, Student
 
 class SchoolSerializer(serializers.ModelSerializer):
     address = serializers.CharField(required=False, allow_null=True, allow_blank=True)
+    classroom_count = serializers.SerializerMethodField()
+    teacher_count = serializers.SerializerMethodField()
+    student_count = serializers.SerializerMethodField()
 
     class Meta:
         model = School
         fields = '__all__'
+    
+    def get_classroom_count(self, obj):
+        return obj.classroom_count or 0
+    
+    def get_teacher_count(self, obj):
+        return obj.teacher_count or 0
+    
+    def get_student_count(self, obj):
+        return obj.student_count or 0
     
     def validate(self, attrs):
         name = attrs.get('name')
