@@ -1,13 +1,12 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+from apis.views.v1.school import SchoolViewSet
+
 
 router = DefaultRouter()
 
-# router.register('school', SchoolViewSet)
-# router.register('classroom', ClassroomViewSet)
-# router.register('teacher', TeacherViewSet)
-# router.register('student', StudentViewSet)
+router.register(r'school', SchoolViewSet, basename='school')
 
 api_v1_urls = (router.urls, 'v1')
 
