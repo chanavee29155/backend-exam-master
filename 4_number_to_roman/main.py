@@ -20,4 +20,22 @@ output = number can not less than 0
 class Solution:
 
     def number_to_roman(self, number: int) -> str:
-        pass
+        if number < 0:
+            return "number can not less than 0"
+        
+        if number == 0:
+            return ""
+        
+        values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+        symbols = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+        
+        result = ""
+        
+        for i in range(len(values)):
+            count = number // values[i]
+            if count:
+                print(i)
+                result += symbols[i] * count
+                number -= values[i] * count
+        
+        return result
