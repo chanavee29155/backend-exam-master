@@ -34,7 +34,6 @@ class Solution:
         for i in range(len(values)):
             count = number // values[i]
             if count:
-                print(i)
                 result += symbols[i] * count
                 number -= values[i] * count
         
